@@ -1,18 +1,18 @@
-# Chat Model Documents: https://python.langchain.com/v0.2/docs/integrations/chat/
-# OpenAI Chat Model Documents: https://python.langchain.com/v0.2/docs/integrations/chat/openai/
+from dotenv import load_dotenv , find_dotenv
+load_dotenv(find_dotenv(), override = True)
+import os
+from langchain_google_genai import ChatGoogleGenerativeAI
+import google.generativeai as genai
 
-from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+# Lists All The Model 
+for model in genai.list_models():
+    print(model.name)
 
-# Load environment variables from .env
-load_dotenv()
+llm = ChatGoogleGenerativeAI(model= 'gemini-1.5-flash', temperature= 1)
 
-# Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-3.5-turbo")
+# Sending Prompt
+response = llm.invoke('Write a Short story about a broken pencil')
 
-# Invoke the model with a message
-result = model.invoke("What is 81 divided by 9?")
-print("Full result:")
-print(result)
-print("Content only:")
-print(result.content)
+# Print Response
+print(response.content)
+print(response.response_metadata)
