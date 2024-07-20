@@ -10,9 +10,12 @@ for model in genai.list_models():
 
 llm = ChatGoogleGenerativeAI(model= 'gemini-1.5-flash', temperature= 1)
 
+
+print("\n\n- - - - - - - - Talk With AI - - - - - - - -\n")
+
+query = input("Ask AI: ")
 # Sending Prompt
-response = llm.invoke('Write a Short story about a broken pencil')
+response = llm.invoke(query)
 
 # Print Response
-print(response.content)
-print(response.response_metadata)
+print(f"AI 🤖 : {response.content}")
