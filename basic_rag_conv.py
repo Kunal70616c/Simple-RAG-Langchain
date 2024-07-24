@@ -27,7 +27,7 @@ db = Chroma(persist_directory=persistent_directory,
             embedding_function=embeddings)
 
 # User Query
-query = "What are the words used to describe the preamble?"
+query = "What are the act related to human rights?"
 
 # retrieve relevant docs based on query
 retriever = db.as_retriever(
